@@ -7,6 +7,14 @@ export default function Join() {
   const [username, setUsername] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const colors = [
+    "bg-red-500",
+    "bg-yellow-500",
+    "bg-green-500",
+    "bg-blue-500",
+    "bg-indigo-500",
+  ];
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
@@ -14,6 +22,7 @@ export default function Join() {
       if (!username) return;
       const res = await addDoc(collection(firestore, "users"), {
         name: username,
+        color: colors[Math.floor(Math.random() * colors.length)],
       });
 
       if (!res) return;
