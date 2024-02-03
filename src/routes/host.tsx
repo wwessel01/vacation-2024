@@ -5,6 +5,7 @@ import { firestore } from "../../firebase";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import Button from "../components/Button";
 import { useState } from "react";
+import Presentation from "../components/host/Presentation";
 
 export default function Host() {
   const [unlocked, setUnlocked] = useState(false);
@@ -75,9 +76,7 @@ export default function Host() {
         </div>
       </div>
       <div className="flex-1 flex gap-4 overflow-hidden">
-        <div className="flex-1 rounded-xl bg-neutral-700 p-4 border-solid border-b-neutral-800 border-r-neutral-800 border-2 border-t-neutral-600 border-l-neutral-600">
-          <h2>Presentation slides</h2>
-        </div>
+        <Presentation />
         <Chat />
       </div>
       <Users />
