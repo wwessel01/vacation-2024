@@ -25,7 +25,7 @@ export default function Button(props: ButtonProps) {
   }
 
   return (
-    <button {...props} className={buttonStyle}>
+    <button {...props} className={buttonStyle + " " + props.className}>
       {props.icon}
       {props.title}
     </button>

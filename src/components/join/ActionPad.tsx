@@ -66,11 +66,10 @@ export default function ActionPad() {
     <div className="flex flex-col items-center gap-4">
       <h1 className="text-xl">Fawaka, {user.name}!</h1>
       <form onSubmit={onSubmit} className="flex flex-col gap-2">
-        <input
-          type="text"
+        <textarea
           placeholder="Message"
           value={message}
-          className="text-black p-2 text-lg rounded-md"
+          className="text-black p-2 text-lg rounded-md min-h-20 max-h-40"
           onChange={(e) => setMessage(e.target.value)}
         />
         <Button
