@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button(props: ButtonProps) {
   let buttonStyle =
-    "text-white active:text-neutral-300 flex gap-2 p-2 text-sm rounded-md items-center transition-all border-2 border-solid";
+    "text-white active:text-neutral-300 flex justify-center gap-2 p-2 text-sm rounded-md items-center transition-all border-2 border-solid disabled:cursor-not-allowed disabled:opacity-50";
   switch (props.buttonClass) {
     case "primary":
       buttonStyle +=

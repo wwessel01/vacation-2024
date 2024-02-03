@@ -23,7 +23,7 @@ export default function Host() {
   };
 
   return (
-    <div className="flex-1 flex flex-col gap-4">
+    <div className="flex-1 flex flex-col gap-4 overflow-hidden">
       <div className="flex justify-end">
         <div className="flex gap-4">
           <Button
@@ -40,7 +40,7 @@ export default function Host() {
           />
         </div>
       </div>
-      <div className="flex-1 flex gap-4">
+      <div className="flex-1 flex gap-4 overflow-hidden">
         <div className="flex-1 rounded-xl bg-neutral-700 p-4 border-solid border-b-neutral-800 border-r-neutral-800 border-2 border-t-neutral-600 border-l-neutral-600">
           <h2>Presentation slides</h2>
         </div>

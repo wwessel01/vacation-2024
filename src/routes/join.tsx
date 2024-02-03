@@ -1,11 +1,15 @@
 import { addDoc, collection, getDoc } from "firebase/firestore";
 import { firestore } from "../../firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
+import ActionPad from "../components/join/ActionPad";
+import Button from "../components/Button";
 
 export default function Join() {
   const [username, setUsername] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
 
   const colors = [
     "bg-red-500",
@@ -29,29 +33,45 @@ export default function Join() {
       const user = await getDoc(res);
 
       if (!user.exists()) return;
-      const data = user.data();
 
-      if (!data.name) return;
-      localStorage.setItem("username", btoa(data.name));
+      localStorage.setItem("userId", btoa(user.id));
+      setUserId(user.id);
     } finally {
       setSubmitting(false);
     }
   };
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      setUserId(userId);
+    }
+    setIsLoading(false);
+  }, []);
+
   return (
-    <div>
-      <h1>Join</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <button type="submit" disabled={submitting}>
-          {submitting ? <Loader /> : "Join"}
-        </button>
-      </form>
+    <div className="flex-1 flex flex-col justify-center items-center">
+      {isLoading || submitting ? (
+        <Loader />
+      ) : userId ? (
+        <ActionPad />
+      ) : (
+        <form onSubmit={onSubmit} className="flex flex-col gap-2">
+          <input
+            type="text"
+            placeholder="Name"
+            value={username}
+            className="text-black p-2 text-lg rounded-md"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Button
+            title="Join"
+            buttonClass="primary"
+            type="submit"
+            disabled={submitting || !!userId}
+          />
+        </form>
+      )}
     </div>
   );
 }
