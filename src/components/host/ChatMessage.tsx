@@ -22,6 +22,7 @@ export default function ChatMessage({
     const userData = userRef.data() as { name: string; color: string };
     setUser(userData);
   }, [data]);
+
   useEffect(() => {
     if (user) return;
     getUser();

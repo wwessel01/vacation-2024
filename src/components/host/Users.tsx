@@ -17,7 +17,7 @@ export default function Users() {
       {error && <p>Error: {error.message}</p>}
 
       {value && (
-        <div className="flex-1 flex overflow-y-scroll gap-4">
+        <div className="flex-1 flex overflow-x-scroll gap-4">
           {value.docs.map((doc) => (
             <UserCard key={doc.id} doc={doc} />
           ))}
