@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
 import Host from "./routes/host";
+import Join from "./routes/join";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "host",
     element: <Host />,
+  },
+  {
+    path: "join",
+    element: <Join />,
   },
 ]);
 
